@@ -12,7 +12,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class LoginComponent implements OnInit {
   showPassword:boolean=false;
-  constructor(private authenticationService:AuthenticationService,
+  constructor(private authService:AuthenticationService,
     private router:Router,
     private toast:HotToastService) {}
   loginForm = new FormGroup({
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const {email, password}=this.loginForm.value
-    this.authenticationService.login(email,password).pipe(
+    this.authService.login(email,password).pipe(
       this.toast.observe({
         success:'Logged in Successfully',
         loading:'Logging in ...',
