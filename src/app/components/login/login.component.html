@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="form-container mat-elevation-z10" >
+  <form [formGroup]="loginForm">
+    <h1>Login</h1>
+    <mat-form-field>
+      <input matInput placeholder="Email Address" formControlName="email" />
+      <mat-error *ngIf="email?.hasError('required')">Email required</mat-error>
+      <mat-error *ngIf="email?.hasError('email')">Email invalid</mat-error>
+    </mat-form-field>
+
+    
+    <mat-form-field>
+      <input
+      [type]="showPassword? 'password': 'text'"
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <mat-icon matSuffix (click)="togglePasswordVisibility()">visibility</mat-icon>
+      <mat-error *ngIf="password?.hasError('required')">Password required</mat-error>
+    </mat-form-field>
+    <div class="center margin-top">
+      <button mat-raised-button color="primary" type="submit">Login</button>
+    </div>
+    <span class="center margin-top"
+      >New to our platform?
+       <a routerLink="/sign-up" class="sign-up">Sign Up!</a></span
+    >
+  </form>
+</div>
