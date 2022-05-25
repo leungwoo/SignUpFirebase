@@ -10,13 +10,13 @@
     
     <mat-form-field>
       <input
-      [type]="showPassword? 'password': 'text'"
+      [type]="showPassword? 'text': 'password'"
         matInput
         type="password"
         placeholder="Password"
         formControlName="password"
       />
-      <mat-icon matSuffix (click)="togglePasswordVisibility()">visibility</mat-icon>
+      <mat-icon matSuffix (click)="togglePasswordVisibility()">{{showPassword? 'visibility_off': 'visibility'}}</mat-icon>
       <mat-error *ngIf="password?.hasError('required')">Password required</mat-error>
     </mat-form-field>
     <div class="center margin-top">

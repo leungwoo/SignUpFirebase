@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  showPassword:boolean=true;
+  showPassword:boolean=false;
   constructor() {}
   loginForm = new FormGroup({
     email: new FormControl('',[Validators.required,Validators.email]),
