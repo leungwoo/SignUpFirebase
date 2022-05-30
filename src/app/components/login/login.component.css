@@ -1,7 +1,5 @@
 .sign-up {
-  font-size: 20px;
+  font-size: 15px;
   color: blue;
-}
-.form-container{
-  margin-top: 20px;
+  font-weight: bold;
 }

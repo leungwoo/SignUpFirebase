@@ -1,1 +1,44 @@
-<p>sign-up works!</p>
+<div class="form-container mat-elevation-z10 margin-top">
+<form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+    <h1>Sign Up</h1>
+    <mat-form-field>
+        <input
+        matInput
+        placeholder="Name"
+        formControlName="name"
+        type="text">
+        <mat-error *ngIf="name?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        type="email">
+        <mat-error *ngIf="email?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="email?.hasError('email')">Email is invalid</mat-error>
+    
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input
+        matInput
+        placeholder="Password"
+        formControlName="password"
+        type="password">
+        <mat-error *ngIf="password?.hasError('required')">Password is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input
+        matInput
+        placeholder="Confirm Password"
+        formControlName="confirmpassword"
+        type="password">
+        <mat-error *ngIf="confirmpassword?.hasError('required')">Password Confirmation is required</mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="signUpForm.hasError('passwordsDontMatch')">Passwords do not match</mat-error>
+    
+    <span class="center margin-top"><button mat-raised-button color="primary" type="submit" [disabled]="this.signUpForm.invalid">Sign Up</button>
+    </span></form>
+</div>
