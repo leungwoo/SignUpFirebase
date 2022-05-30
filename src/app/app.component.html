@@ -1,14 +1,17 @@
-<mat-toolbar>CrownHouseUS
+<mat-toolbar color="primary">CrownHouseUS
   <!--Check user authentication and if user is authentic show logout button -->
 <ng-container *ngIf="authService.currentUser$ | async as user;else loginButton"> 
-  <button mat-raised-button color="primary" (click)="logout()">
-    <mat-icon>logout</mat-icon> Logout
+  <button mat-button  >
+    <mat-icon >account_circle</mat-icon> 
+    {{user.displayName}}
+    <mat-icon [matMenuTriggerFor]="usermenu">expand_more</mat-icon>
+    
   </button>
 </ng-container>
 
 <!-- Show the login button if user not signed in-->
 <ng-template #loginButton>
-  <button mat-raised-button color="primary" routerLink="/login">
+  <button mat-raised-button routerLink="/login">
     <mat-icon>login</mat-icon>
     Login</button>
 </ng-template>
@@ -17,3 +20,7 @@
 <div class="content">
   <router-outlet></router-outlet>
 </div>
+<!--Menu reference to logout-->
+<mat-menu #usermenu="matMenu">
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
