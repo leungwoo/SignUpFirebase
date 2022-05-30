@@ -24,6 +24,8 @@ export function passwordMatchValidator(): ValidatorFn {
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
+  showPassword:boolean=true;
+
   signUpForm = new FormGroup ({
     name:new FormControl('',[Validators.required]),
     email: new FormControl('',[Validators.required,Validators.email]),
@@ -47,6 +49,9 @@ export class SignUpComponent implements OnInit {
   get confirmpassword(){
     return this.signUpForm.get('confirmpassword');
   }
+  onToggleShowPassword(){
+    this.showPassword=!this.showPassword;
+  }
   onSubmit(){
     if(this.signUpForm.invalid){
       return;
@@ -55,8 +60,8 @@ export class SignUpComponent implements OnInit {
     this.authService.signUp(name,email,password).pipe(
       this.toast.observe({
         success:'Congrats you are Signed Up!',
-      loading:'Signning you up..',
-    error:'Sorry there was an error '
+      loading:'Signing in...',
+    error:({message})=>`${message}`
   })
     ).subscribe(()=>{
       this.router.navigateByUrl('/home')

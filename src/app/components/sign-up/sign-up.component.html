@@ -9,6 +9,7 @@
         type="text">
         <mat-error *ngIf="name?.hasError('required')">Name is required</mat-error>
     </mat-form-field>
+
     <mat-form-field>
         <input
         matInput
@@ -17,24 +18,25 @@
         type="email">
         <mat-error *ngIf="email?.hasError('required')">Email is required</mat-error>
         <mat-error *ngIf="email?.hasError('email')">Email is invalid</mat-error>
-    
     </mat-form-field>
-
 
     <mat-form-field>
         <input
         matInput
         placeholder="Password"
         formControlName="password"
-        type="password">
+        [type]="showPassword? 'password':'text'">
+        <mat-icon matSuffix (click)="onToggleShowPassword()">{{showPassword? 'visibility_off':'visibility'}}</mat-icon>
         <mat-error *ngIf="password?.hasError('required')">Password is required</mat-error>
     </mat-form-field>
+
     <mat-form-field>
         <input
         matInput
         placeholder="Confirm Password"
         formControlName="confirmpassword"
         type="password">
+     
         <mat-error *ngIf="confirmpassword?.hasError('required')">Password Confirmation is required</mat-error>
     </mat-form-field>
     <mat-error *ngIf="signUpForm.hasError('passwordsDontMatch')">Passwords do not match</mat-error>

@@ -11,7 +11,7 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  showPassword:boolean=false;
+  showPassword:boolean=true;
   constructor(private authService:AuthenticationService,
     private router:Router,
     private toast:HotToastService) {}
